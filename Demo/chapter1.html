@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        [v-clock]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app" v-clock>
+  <p>
+      {{msg.age}}的{{msg.name}}
+      使用的角色是{{msg.wife.city}}的
+      {{msg.wife.name}}
+  </p>
+    <a v-bind:href="msg.url">点我进我网站~</a>
+</div>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: "#app",
+    data(){
+        return {
+            // 其实这里用''也行
+            msg: ''
+            // msg:{
+            //     name: null,
+            //     age: null,
+            //     wife: {
+            //         name: null,
+            //         city: null
+            //     }
+            // }
+        }
+    },
+    mounted(){//链式编程
+        axios.get('data.json').then(response=>(this.msg = response.data));
+    }
+  });
+</script>
+</body>
+</html>

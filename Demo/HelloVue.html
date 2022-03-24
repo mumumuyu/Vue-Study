@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>
+</head>
+<script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+<body>
+<div id="app">
+    <span v-bind:title="msgStart">
+        悬停查看信息。
+    </span>
+    <p v-if="ok==='ok的'">这是ok</p>
+    <p v-else-if="ok==='不ok'">不Ok</p>
+    <p v-else>这是其他</p>
+    <br>
+    <p v-for="(item,index) in items">{{item.msg}}--{{index+1}}</p>
+    <br>
+    <button v-on:click="count+=1">add 1</button>
+    {{count}}
+    <br>
+    <button v-on:click="sayHi">click me to say hi</button>
+    <br>
+    <label>请输入一些数据</label>
+    <input type="text" v-model="inmsg"/>{{inmsg}}
+    <input type="radio" value="男" v-model="sex"/>男
+    <input type="radio" value="女" v-model="sex"/>女
+    <br>
+    <select v-model="abc">
+        <option value="" disabled>--请选择--</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+    </select>
+    <input type="checkbox" value="唱歌" v-model="box"/>唱歌
+<!--    <input type="checkbox" value="跳舞" v-model="box"/>跳舞-->
+<!--    <input type="checkbox" value="跑步" v-model="box"/>跑步-->
+<!--    <input type="checkbox" value="玩呀" v-model="box"/>玩呀-->
+    <p>你选中了 {{sex}} {{abc}} {{box}}</p>
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            inmsg:"",
+            msgStart:"这是悬停显示的信息",
+            sex:"",
+            ok: "ok的",
+            abc:"",
+            box:"",
+            items: [
+                {msg:"lgd学Vue"},
+                {msg:"lgd学Java"},
+                {msg:"lgd学javaWeb"}
+            ],
+            count: 0
+        },
+        methods:{
+            sayHi: function (){
+                alert(this.ok)
+            }
+        }
+    })
+</script>
+</body>
+</html>
