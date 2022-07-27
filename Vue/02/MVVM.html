@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+            <!-- 单向数据绑定 v-bind-->
+            <input type="text" :value="name" />
+             
+        </div>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false;
+
+            const v = new Vue({
+                el:'#root', 
+                data(){
+                    return{
+                        name: 'lgd1'
+                    }
+                }
+            })
+  
+        </script>    
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+            <!-- 单向数据绑定 v-bind-->
+            <input type="text" :value="name" />
+             <!-- 双向数据绑定 v-model 只可以应用如Input标签上但不可用于一些其他标签如h2-->
+            <input type="text" v-model:value="name" />
+        </div>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false;
+
+            new Vue({
+                el:'#root', 
+                data: { 
+                    name: 'lgd1'
+                }
+            })
+
+        </script>    
+    </body>
+</html>

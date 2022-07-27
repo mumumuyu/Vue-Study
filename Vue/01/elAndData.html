@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+            <!-- 单向数据绑定 v-bind-->
+            <input type="text" :value="name" />
+             
+        </div>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false;
+
+            const v = new Vue({
+                //el:'#root', 
+                //第一种写法:对象式
+                // data: { 
+                //     name: 'lgd1'
+                // }
+
+                // 第二种写法 函数式 组件时候，就必须用函数式
+                //data:function(){
+                data(){
+                    //此处this 是Vue实例
+                    console.log('@@@',this)
+
+                    return{
+                        name: 'lgd1'
+                    }
+                }
+            })
+            
+            console.log(v)
+
+            setTimeout(() => {
+                //利用mount挂载
+                v.$mount('#root')
+            },1000)
+            
+        </script>    
+    </body>
+</html>

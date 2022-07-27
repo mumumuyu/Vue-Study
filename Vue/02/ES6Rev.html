@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+             
+        </div>
+
+        <script type="text/javascript">
+            Vue.config.productionTip = false;
+
+            const v = new Vue({
+                el:'#root', 
+                data(){
+                    return{
+                        //通过setter getter
+                        name: 'lgd1'
+                    }
+                }
+            })
+
+            let person = {
+                name: 'lgd',
+                sex: 'man'
+            }
+            
+            let number = 24
+
+            //这种方式增加的属性不可以被对象遍历到 
+            Object.defineProperty(person,'age',{
+                // value: 18,
+                // enumerable: true, //使用enumerable可以设置遍历到 Object.keys(person)
+                // writable: true, // 控制属性是否可以被修改 person.age = 19
+                // configurable: true // 控制属性是否可以被删除 delete
+
+                //有人用person.age访问时就会被调用，getter
+                get:function(){
+                    console.log('有人读取值' + number)
+                    return number
+                },
+                // 同理 setter
+                set(value){
+                    console.log('有人把值改成了' + value)
+                    number = value
+                }
+            })
+            //这样就可以把两个属性进行双向绑定，数据代理
+            Object.defineProperty(person, 'age2',{
+                set(value){
+                    person.age = value
+                    number = value
+                },
+                get(){
+                    return person.age
+                }
+            })
+
+            console.log(Object.keys(person))
+
+            //这种方式可以遍历person每个值
+            for(let key in person){
+                console.log(person[key])
+            }
+
+            console.log(person)
+  
+        </script>    
+    </body>
+</html>

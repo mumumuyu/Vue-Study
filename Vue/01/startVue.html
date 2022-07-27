@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>开始Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+            <!-- {{}}模板,里头js表达式可以产生一个值 -->
+            hello , {{name.toUpperCase()}} ， {{Date.now()}}
+        </div>
+        <div id = "root2">
+            <!-- {{}}模板 -->
+            hello2, {{name}}    
+        </div>
+        <!-- 步骤:1.创建Vue实例并绑定对象(第一个Vue绑定第一个对应出现的容器) 将数据与视图分解 -->
+        <script type="text/javascript">
+            
+            Vue.config.productionTip = false;
+
+            //一个Vue实例,容器和实例使用element绑定
+            new Vue({
+                el:'#root', //el用于指定当前Vue为哪个容器服务，一般为css选择器字符串
+                data: { //data存储数据，用于el的指定容器进行使用
+                    name: 'lgd1'
+                }
+            })
+
+            new Vue({
+                el:'#root2', //el用于指定当前Vue为哪个容器服务，一般为css选择器字符串
+                data: { //data存储数据，用于el的指定容器进行使用
+                    name: 'lgd2'
+                }
+            })
+        </script>    
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <meta charset = "UTF-8" />
+    <head>Vue</head>
+    <script type="text/javascript" src="../js/vue.js" ></script>
+    <body>
+        <div id = "root">
+            <!-- 插值语法 用于标签体 js表达式-->
+            {{name}}
+            <!-- 指令语法 管理标签属性  v-bind: 可以简写为: 后头自动+{{}}里头写js表达式-->
+            <a v-bind:href="muban.url" v-bind:a="test">点我进我{{muban.name2}}网站</a>
+            <a :href="muban.url.toUpperCase()">点我进我网站2</a>
+
+        </div>
+
+        <script type="text/javascript">
+            // 一般xx{}为一个对象，xxx{{x:'lolo'}}一个对象，可以嵌套使用xx.xxx.lolo得到值
+            Vue.config.productionTip = false;
+
+            new Vue({
+                el:'#root', 
+                data: { 
+                    name: 'lgd1',
+                    muban:{
+                    name: 'lgd2',
+                    url: 'http://www.leigd.cn'
+                    },
+                    test: 'hello'
+                }
+            })
+
+        </script>    
+    </body>
+</html>
